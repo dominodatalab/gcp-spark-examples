@@ -1,17 +1,11 @@
-To try this out try these steps
+## Publish a Docker image to Google Cloud Registry
 
-1. Create a Domino Environment if it does not exist
+1. Prepare your GCP client for Spark inside the workspace
 
-Use the base environment as the default DAD
-
-Add the following to the `Dockerfile` instructions
 ```
-RUN sudo apt-get install apt-transport-https ca-certificates gnupg -y
-RUN sudo apt-get install apt-transport-https ca-certificates gnupg -y
-RUN sudo apt autoremove -y
-RUN curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-RUN echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
-RUN sudo apt-get update && sudo apt-get install google-cloud-cli -y
+cd /mnt/code
+
+. publish_to_gcp_cloud_build.sh
 ```
 
 This is an environment for a workspace so remember to add the `Pluggable Workspace Tools` section
@@ -48,3 +42,6 @@ curl --location --request POST 'https://<service_endpoint>/predict' \
 
 
 
+## Run a Spark Job which integrates with Google Cloud Storage
+
+Run the workbook GCS_WK.ipynb
